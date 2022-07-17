@@ -2,7 +2,7 @@ version: "3"
 services:
     app:
         image: php:8-fpm
-        container_name: practice-Laravel-app
+        container_name: base-Laravel-app
         volumes:
             - ./src/:/var/www/html/src/
             - ./docker/app/php.ini:/usr/local/etc/php/php.ini
@@ -11,7 +11,7 @@ services:
             dockerfile: ./docker/app/Dockerfile
     web:
         image: nginx:latest
-        container_name: practice-Laravel-web
+        container_name: base-Laravel-web
         depends_on:
             - app
         ports:
@@ -20,7 +20,7 @@ services:
             - ./docker/web/default.conf:/etc/nginx/conf.d/default.conf
             - ./src/:/var/www/html/src/
     db:
-        container_name: practice-Laravel-db
+        container_name: base-Laravel-db
         build: 
             context: ./
             dockerfile: ./docker/db/Dockerfile
