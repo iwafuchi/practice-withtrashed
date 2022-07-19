@@ -1,4 +1,4 @@
-FROM mysql/mysql-server:8.0
+FROM mysql/mysql-server:latest
 
 ENV MYSQL_DATABASE=laravel \
     MYSQL_USER=phper \
