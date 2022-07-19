@@ -6,5 +6,5 @@ ENV MYSQL_DATABASE=laravel \
     MYSQL_ROOT_PASSWORD=secret \
     TZ=Asia/Tokyo
 
-COPY ./docker/db/my.cnf /etc/my.cnf
+COPY ./docker/mysql/my.cnf /etc/my.cnf
 RUN chmod 644 /etc/my.cnf
