@@ -17,6 +17,17 @@ class UserController extends Controller {
             $query->withTrashed();
         }])->get();
 
-        dd($query1->get(), $query2, $query3);
+
+        $withValue1 = ['phone' => fn ($q) => $q->withTrashed()];
+        $query4 = User::with($withValue1)->get();
+
+
+        $withValue2 = ['phone' => function ($query) {
+            $query->withTrashed();
+        }];
+        $query5 = User::with($withValue2)->get();
+
+
+        dd($query1->get(), $query2, $query3, $query4, $query5);
     }
 }
