@@ -11,6 +11,10 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $appends = [
+        'nickname'
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -43,5 +47,9 @@ class User extends Authenticatable {
 
     public function phone() {
         return $this->hasOne(Phone::class);
+    }
+
+    public function getNicknameAttribute() {
+        return $this->name . 'さん';
     }
 }
