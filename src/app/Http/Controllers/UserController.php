@@ -23,7 +23,7 @@ class UserController extends Controller {
 
         $query3 = User::with(['phone' => function ($query) {
             $query->withTrashed();
-        }])->get();
+        }])->get()->toArray();
 
         $withValue2 = ['phone' => function ($query) {
             $query->withTrashed();
