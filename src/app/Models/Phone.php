@@ -10,15 +10,21 @@ class Phone extends Model {
     use HasFactory, SoftDeletes;
 
     protected $appends = [
-        'random_id'
+        'status_of_use'
     ];
 
 
+    protected $fillable = [
+        'name',
+        'updated_at',
+        'deleted_at',
+    ];
+
     public function user() {
-        return $this->belongsTo(User::class, 'random_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getRandomIdAttribute() {
-        return rand(0, 99999);
+    public function getStatusOfUseAttribute() {
+        return isset($this->deleted_at) ? $this->naem . ' is unusable' : $this->name . ' is usable';
     }
 }
