@@ -52,9 +52,11 @@ class UserController extends Controller {
     }
     public function params($request = 'index') {
         $displayFlg = "{$request}_flg";
-        $result = array_column(array_filter(ParamsConst::ARRAY, function ($flg) use ($displayFlg) {
-            return $flg[$displayFlg];
-        }), 'description', 'key');
+        $result = [
+            'description' => array_column(array_filter(ParamsConst::ARRAY, function ($flg) use ($displayFlg) {
+                return $flg[$displayFlg];
+            }), 'description', 'key')
+        ];
         dd($result);
     }
 }
