@@ -12,7 +12,8 @@ class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $appends = [
-        'nickname'
+        'nickname',
+        'status_of_use'
     ];
 
     /**
@@ -46,7 +47,7 @@ class User extends Authenticatable {
     ];
 
     public function phone() {
-        return $this->hasOne(Phone::class);
+        return $this->hasOne(Phone::class, $this->id);
     }
 
     public function getNicknameAttribute() {
