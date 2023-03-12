@@ -7,8 +7,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-use function GuzzleHttp\Promise\each;
-
 class Summary extends Command {
     /**
      * The name and signature of the console command.
